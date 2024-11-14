@@ -6,6 +6,7 @@ pdf.set_auto_page_break(auto=False, margin=0)
 
 df = pd.read_csv("topics.csv")
 
+#Topics pages
 for index, row in df.iterrows():
     pdf.add_page()
 
@@ -14,9 +15,10 @@ for index, row in df.iterrows():
     pdf.set_text_color(100, 100, 100)
     pdf.cell(w=0, h=12, txt=row["Topic"], align="L",
              ln=1)
+
+    #Lines into the pages
     for y in range(20, 298, 10):
         pdf.line(10, y, 200, y)
-
 
     # Set the footer
     pdf.ln(270)
@@ -24,6 +26,7 @@ for index, row in df.iterrows():
     pdf.set_text_color(180, 180, 180)
     pdf.cell(w=0, h=0, txt=row["Topic"], align="R")
 
+    #Blanck pages
     for i in range(row["Pages"] - 1):
         pdf.add_page()
 
@@ -33,6 +36,7 @@ for index, row in df.iterrows():
         pdf.set_text_color(180, 180, 180)
         pdf.cell(w=0, h=0, txt=row["Topic"], align="R")
 
+        # Lines into the pages
         for y in range(20, 298, 10):
             pdf.line(10, y, 200, y)
 
